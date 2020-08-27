@@ -69,9 +69,36 @@ int reverse(num)
 	}
 	return rev;
 }
+int preprime(num)//19
+{
+	int i=1;
+	while(1)
+	{
+		if(isprime(num-i))//19-2
+		{
+			return num-i;
+		}
+		i++;
+	}
+}
 
-
-
+int isspprime(int n)
+{
+	int p1,p2,c=1,num;//n=19
+	num=n;//copy of org value
+	while(p2!=2)
+	{
+		p1=preprime(n);//13
+		p2=preprime(p1);//11
+		//printf("%d %d\n",p1,p2);
+		if(p1+p2+c==num)
+		{
+			return 1;
+		}
+		n=p1;//17
+	}
+	return 0;
+}
 
 
 
