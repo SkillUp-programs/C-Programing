@@ -13,6 +13,11 @@ int isprime(int num)
 	return 1;
 }
 
+
+
+
+
+
 int isprim(int num)
 {
 	
