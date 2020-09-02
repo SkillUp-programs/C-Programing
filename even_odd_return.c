@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include"arrays.h"
-5
+
 
 int main()
 {
