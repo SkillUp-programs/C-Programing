@@ -160,6 +160,80 @@ int * evenodd_return_count(int *arr,int *size)
 	return eoc;//
 }
 
+//03/sep/2020
+int count_primes1(int *arr,int size)//1 2 3 4 5
+{
+	int i,pc=0;
+	for(i=0;i<size;i++)
+	{
+		//arr[i];
+		
+		if(isprime(arr[i]))//1 2 3 4 5
+		{
+			pc++;//3
+		}
+		
+	}
+	return pc;
+}
+
+
+
+void display_primes(int *arr,int *size,int *primes)
+{
+	int i,pc=0,j=0;
+	for(i=0;i<*size;i++)
+	{
+		//arr[i];
+		if(isprime(arr[i]))//2
+		{
+			primes[pc++]=arr[i];//primes[0]=2;pc=pc+1
+		}
+	}
+	*size=pc;
+}
+
+
+
+
+
+int display_prime(int *arr,int size,int *primes)
+{
+	int i,pc=0,j=0;
+	for(i=0;i<size;i++)
+	{
+		//arr[i];
+		if(isprime(arr[i]))//2
+		{
+			primes[pc++]=arr[i];//primes[0]=2;pc=pc+1
+		}
+	}
+	return pc;
+}
+
+
+
+int * display_prime_return(int *arr,int *size)
+{
+	int i,pc=0;
+	static int primes[100];
+	for(i=0;i<*size;i++)
+	{
+		//arr[i];
+		if(isprime(arr[i]))//2
+		{
+			primes[pc++]=arr[i];//primes[0]=2;pc=pc+1
+		}
+	}
+	*size=pc;
+	return primes;//
+}
+
+
+
+
+
+
 
 
 
