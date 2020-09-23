@@ -78,6 +78,279 @@ void string_concat(char *str1,char *str2)
 
 
 
+//21/09/2020
+int word_count(char *str)
+{
+	int len=string_len(str);
+	int i,sp=0;
+	for(i=0;i<len;i++)
+	{
+		if(str[i]==' ')
+		{
+			sp++;
+		}
+	}
+	return sp+1;
+}
+
+
+int camelcase_count(char *str)//ThisIsSudhir
+{
+	int len=string_len(str);
+	int i,wc=0;
+	for(i=0;i<len;i++)
+	{
+		if(str[i]>=65 && str[i]<=90)//T
+		{
+			wc++;
+		}
+	}
+	return wc;
+}
+
+
+char *camelcase_str(char *str)
+{
+	int len=string_len(str);
+	int i,j;
+	static char str1[100];//j is for str1
+	for(i=0,j=0;i<len;i++,j++)
+	{
+		if(str[i]>=65 && str[i]<=90 && i!=0)//T
+		{
+			str1[j++]=' ';
+		}
+		str1[j]=str[i];
+	}
+	str1[j]='\0';
+	return str1;
+}
+
+
+
+char * Toggle_case(char *str)
+{
+	int len=string_len(str);
+	int i;
+	static char str1[100];//j is for str1
+	//printf("%s",str);
+	for(i=0;i<len;i++)
+	{
+		if(str[i]==' ')
+		{
+			str1[i]=str[i];
+		}
+		else if(str[i]>=65 && str[i]<=90)
+		{
+			str1[i]=str[i]+32;
+		}
+		else
+		{
+			str1[i]=str[i]-32;
+		}
+	}
+	str1[i]='\0';
+	return str1;
+}
+
+//22/09/2020
+int string_compare(char *str1,char *str2)//sidhir sudhir
+{
+	int len1,len2,i;
+	len1=string_len(str1);//6
+	len2=string_len(str2);//6
+	if(len1==len2)//6==6
+	{
+		///main logic
+		for(i=0;i<len1;i++)//i   u
+		{
+			if(str1[i]!=str2[i])//i!=u
+			{
+				return 0;
+			}
+		}
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+//sudhir
+int isanagram(char *str1,char *str2)
+{
+	int len1,len2,i,a[26]={0},b[26]={0};
+	len1=string_len(str1);//6
+	len2=string_len(str2);//6
+	if(len1==len2)
+	{
+		//main logic
+		for(i=0;i<len1;i++)
+		{
+			if((str1[i])>=97 && str1[i]<=122)
+			{
+				a[str1[i]-97]++;
+			}
+			else if(str1[i]>=65 && str1[i]<=90)
+			{
+				a[str1[i]-65]++;
+			}
+		}
+		
+		for(i=0;i<len2;i++)
+		{
+			if((str2[i])>=97 && str2[i]<=122)
+			{
+				b[str2[i]-97]++;
+			}
+			else if(str2[i]>=65 && str2[i]<=90)
+			{
+				b[str2[i]-65]++;
+			}
+		}
+		for(i=0;i<26;i++)
+		{
+			if(a[i]!=b[i])
+			{
+				return 0;
+			}
+		}
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+	
+}
+
+//cdefz
+// 0 0 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+
+// 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+// abcd
+
+//23/09/2020
+int ispangram(char *str)
+{
+	int i,a[26]={0},len=string_len(str);
+	for(i=0;i<len;i++)
+	{
+		if((str[i])>=97 && str[i]<=122)
+		{
+			a[str[i]-97]++;
+		}
+		else if(str[i]>=65 && str[i]<=90)
+		{
+			a[str[i]-65]++;
+		}
+	}
+	for(i=0;i<26;i++)
+	{
+		//printf("%d ",a[i]);
+		if(a[i]==0)
+			return 0;
+	}
+	return 1;
+}
+/*
+a[26]=[1,1,0,0,0,0,0,1,,0]
+
+*/
+
+
+int count_chars(char *str1,char *str2)
+{
+	int i,len1,len2,a[26]={0},b[26]={0},c=0;
+	len1=string_len(str1);
+	len2=string_len(str2);
+	for(i=0;i<len1;i++)
+	{
+		if((str1[i])>=97 && str1[i]<=122)
+		{
+			a[str1[i]-97]++;
+		}
+		else if(str1[i]>=65 && str1[i]<=90)
+		{
+			a[str1[i]-65]++;
+		}
+	}
+		
+	for(i=0;i<len2;i++)
+	{
+		if((str2[i])>=97 && str2[i]<=122)
+		{
+			b[str2[i]-97]++;
+		}
+		else if(str2[i]>=65 && str2[i]<=90)
+		{
+			b[str2[i]-65]++;
+		}
+	}
+	for(i=0;i<26;i++)
+	{
+		//printf("%d ",a[i]);
+		if(a[i]!=0 && b[i]!=0)
+		{
+			//3 //2
+			if(a[i]==b[i])
+			{
+				c+=a[i];
+			}
+			else if(a[i]>b[i])
+			{
+				c+=b[i];
+			}
+			else
+			{
+				c+=a[i];
+			}
+		}
+	}
+	return c;
+	
+}
+
+//2 0 0 0 1 0 0 0 1 0 1 0
+//1 0 0 1 1 0 0 0 0 1 1 0
+//2
+
+
+char max_char(char *str)
+{
+	int i,len=string_len(str),a[26]={0},max=0,mi=0;
+	for(i=0;i<len;i++)
+	{
+		if((str[i])>=97 && str[i]<=122)
+		{
+			a[str[i]-97]++;
+		}
+		else if(str[i]>=65 && str[i]<=90)
+		{
+			a[str[i]-65]++;
+		}
+	}
+	for(i=0;i<26;i++)
+	{
+		if(max<a[i])
+		{
+			max=a[i];
+			mi=i;
+		}
+	}
+	return mi+65;//mi+97
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
