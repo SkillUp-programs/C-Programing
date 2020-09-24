@@ -343,16 +343,85 @@ char max_char(char *str)
 }
 
 
+//24/09/2020
+int find_vowel_count(char *str)
+{
+	int i,vc=0,a[26]={0},len=string_len(str);
+	for(i=0;i<len;i++)//sudhir
+	{
+		if(str[i]=='a' || str[i]=='e' || str[i]=='i' || str[i]=='0' || str[i]=='u')
+		{
+			a[str[i]-97]++;
+		}
+	}
+	for(i=0;i<26;i++)
+	{
+		if(a[i]!=0)
+		{
+			vc++;//unique vowel count
+			//vc+=a[i];//vowel count
+		}
+	}
+	return vc;
+}
 
 
+char * unique_chars(char *str)
+{
+	int i,len=string_len(str),a[26]={0},k=0;
+	static char str2[100];
+	for(i=0;i<len;i++)
+	{
+		if((str[i])>=97 && str[i]<=122)
+		{
+			a[str[i]-97]++;
+		}
+		else if(str[i]>=65 && str[i]<=90)
+		{
+			a[str[i]-65]++;
+		}
+	}
+	for(i=0;i<len;i++)
+	{
+		//printf("%d %c\n",str[i]-97,str[i]);	
+		if((a[str[i]-97])!=0)
+		{
+			//printf("%c ",str[i]);
+			str2[k++]=str[i];
+			a[str[i]-97]=0;//imp point
+		}
+	}
+	return str2;
+}
+//aasdvasvavda
+//0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0
+
+//asd
 
 
-
-
-
-
-
-
+char first_unique_char(char *str)
+{
+	int i,len=string_len(str),a[26]={0};
+	for(i=0;i<len;i++)
+	{
+		if((str[i])>=97 && str[i]<=122)
+		{
+			a[str[i]-97]++;
+		}
+		else if(str[i]>=65 && str[i]<=90)
+		{
+			a[str[i]-65]++;
+		}
+	}
+	for(i=0;i<len;i++)
+	{
+		if(a[str[i]-97]==1)
+		{
+			return str[i];
+		}
+	}
+	return -1;
+}
 
 
 
